@@ -53,4 +53,4 @@
                     "cool!!!"
                     "but it gets cooler cause..."
                     "the value's line up!!!"}}])
-  (->> sample-input convert println)
+(->> sample-input convert println)
