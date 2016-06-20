@@ -1,0 +1,25 @@
+(require '[clojure.string :as str])
+(defn prepend-parens [n-times text]
+  (let [line (remove-symbols text)]
+    (defn prepend-paren [s] (str \( s))
+    (nth (iterate prepend-paren text) n-times)))
+(defn append-parens [n-times text]
+  (let [line (remove-symbols text)]
+    (defn append-paren [s] (str s \)))
+    (nth (iterate append-paren text) n-times)))
+(defn count-tabs [s]
+      (->> s seq (filter #(= % \tab)) count))
+(defn diff-tabs [curr-line other-line]
+  (cond (contains? #{:begin :end} other-line) (inc (count-tabs curr-line))
+        (empty? other-line) 1
+        :else (- (count-tabs curr-line) (count-tabs other-line))))
+(defn neg-to-zero [n] (if (neg? n) 0 n))
+(defn convert-line [prev-line curr-line next-line]
+  (->> curr-line
+       (prepend-parens (neg-to-zero (diff-tabs curr-line prev-line)))
+       (append-parens (neg-to-zero (diff-tabs curr-line next-line)))))
+(defn convert-lines [text]
+  (let [curr-lines (str/split-lines text)
+        prev-lines (concat [:begin] (butlast curr-lines))
+        next-lines (concat (rest curr-lines) [:end])]
+    (str/join \newline (map convert-line prev-lines curr-lines next-lines))))
