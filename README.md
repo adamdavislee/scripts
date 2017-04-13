@@ -1,6 +1,6 @@
 DISCLAIMER!
 ===========
-This is personal code that is short, but undocumented, untested, and largely merely for the purpose of my own practice.<br>
+This is personal code that is short, undocumented, untested, and largely merely for the purpose of my own practice.<br>
 I would be honored if someone else in the world ran this code, but **There Be Dragons**.
 
 
