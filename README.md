@@ -1,9 +1,5 @@
-DISCLAIMER!
-===========
-This is personal code that is short, undocumented, untested, and largely merely for the purpose of my own practice.<br>
-I would be honored if someone else in the world ran this code, but **There Be Dragons**.
-
-
+Personal code that I practiced on a long time ago:
+==================================================
 
 IC or Indented Clojure
 ======================
